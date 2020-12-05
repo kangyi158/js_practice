@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function get_letter_interval_2(number_a, number_b) {
+            //在这里写入代码 
+            var min = number_a, max = number_b, flag = 0;
+            if (number_a > number_b) {
+                flag = 1;
+                min = number_b;
+                max = number_a;
+            }
+            var a = 'a';
+            var code = a.charCodeAt();
+            var arr = [];
+            for (var i = min; i <= max; i++) {
+                var zheng = parseInt(i / 27);
+                // console.log(zheng);
+                var yu = i % 27;
+                console.log(yu);
+                if (zheng == 0 && yu != 0) {
+                    arr.push(String.fromCharCode(i - 1 + code));
+                }
+                // } else if (zheng > 0 && yu == 26) {
+                //     console.log(yu);
+                //     zheng += 1;
+                //     yu = 0;
+                //     arr.push(String.fromCharCode(zheng - 1 + code) + "" + String.fromCharCode(yu + code));
+                // } 
+                else if (yu == 26) {
+                    arr.push(String.fromCharCode(zheng + code) + "" + String.fromCharCode(code));
+
+
+                }
+                else {
+                    arr.push(String.fromCharCode(zheng - 1 + code) + "" + String.fromCharCode(yu + code));
+                }
+            }
+            if (flag == 1) {
+                arr = arr.reverse();
+            }
+            console.log(String.fromCharCode(26 + code));
+            return arr;
+        }
+
+        console.log(get_letter_interval_2(20, 53));
+        // console.log(get_letter_interval_2(5, 1));
+
+    </script>
+</body>
+
+</html>
